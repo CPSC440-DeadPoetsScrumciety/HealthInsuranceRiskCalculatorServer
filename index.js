@@ -17,7 +17,7 @@ app.get('/', (req, res)=>{
 res.send("Welcome to your server")
 })
 
-// below function from epogue's github:
+// below function adapted from epogue's github:
 // Template for calculating BMI using height in feet/inches and weight in pounds.
 app.get('/calculate-bmi', (request, response) => {
 	console.log('Calling "/calculate-bmi" on the Node.js server.')
@@ -29,9 +29,15 @@ app.get('/calculate-bmi', (request, response) => {
 	console.log('Height:' + heightFeet + '\'' + heightInches + '\"')
 	console.log('Weight:' + weight + ' lbs.')
 
-	// Todo: Implement unit conversions and BMI calculations.
-	// Todo: Return BMI instead of Todo message.
+	var totalInches = heightInches + (12 * heightFeet)
+	var heightMeters = heightInches * 0.0254
 
+	// TODO: convert weight into kilograms *******
+	var weightKG = 1 // TODO: delete, this is a temp placeholder for bmi function *******
+
+	var bmi = weightKG / (heightMeters * heightMeters)
+
+	console.log(bmi)
 	response.type('text/plain')
 	response.send('Todo: Implement "/calculate-bmi"')
 })
