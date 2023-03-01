@@ -17,9 +17,10 @@ app.get('/', (req, res)=>{
 res.send("Welcome to your server")
 })
 
+
 // below function adapted from epogue's github:
 // Template for calculating BMI using height in feet/inches and weight in pounds.
-app.get('/calculate-bmi', (request, response) => {
+app.get('/calculate-bmi', (req, res) => {
 	console.log('Calling "/calculate-bmi" on the Node.js server.')
 	var inputs = url.parse(request.url, true).query
 	const heightFeet = parseInt(inputs.feet)
@@ -38,8 +39,7 @@ app.get('/calculate-bmi', (request, response) => {
 	var bmi = weightKG / (heightMeters * heightMeters)
 
 	console.log(bmi)
-	response.type('text/plain')
-	response.send('Todo: Implement "/calculate-bmi"')
+	res.send(bmi)
 })
 
 
