@@ -14,7 +14,7 @@ app.use(cors())
 
 
 app.get('/', (req, res)=>{
-res.send("Welcome to your server")
+console.log("reached server")
 })
 
 
@@ -37,7 +37,7 @@ app.get('/calculate-bmi', (req, res) => {
 	var weightKG = 1 // TODO: delete, this is a temp placeholder for bmi function *******
 
 	var bmi = weightKG / (heightMeters * heightMeters)
-
+	bmi = 5 // TODO remove
 	console.log(bmi)
 	res.send(bmi)
 })
