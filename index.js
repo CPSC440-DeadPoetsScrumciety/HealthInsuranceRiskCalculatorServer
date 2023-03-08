@@ -75,12 +75,15 @@ app.post('calc-total-risk', bodyParser, (req, res) => {
 });
 
 
-// Custom 404 page.
+// Custom 404 page
 app.use((req, res) => {
-	response.type("text/plain");
-	response.status(404);
-	response.send("404 - Not Found");
-  });
+	// TODO
+});
+
+// Custom 500 page
+app.use(function (error, req, res, next) {
+	// TODO
+});
 
 
 //Start your server on a specified port
