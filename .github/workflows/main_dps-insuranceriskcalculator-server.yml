@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'dps-insuranceriskcalculator-server'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_377B4B03AB5F42AD9AD2D25F9DBE3140 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D1FB8200219044C99D42C39FC56A7723 }}
           package: .
