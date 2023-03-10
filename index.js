@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser').json();
 const cors = require('cors');
 
 const app = express();
@@ -10,16 +10,30 @@ app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(cors());
 
 
-app.get('/', (req, res)=>{
+app.get('/ping', (req, res)=>{
 console.log("reached server")
+response.type("text/plain");
+response.send("Ping succeeded!");
 });
 
 // calculates risk points from age
 app.post('/calc-age', bodyParser, (req, res) => {
 	// TODO, returns risk points based on age range
+	var output = {points: 0};
+  	age = req.body.age;
+	
+	if (age < 30) {
+		output.points = 0;
+	} else if (age < 45) {
+		output.points = 10;
+	} else if (age < 60) {
+		output.points = 20;
+	} else {
+		output.points = 30;
+	}
 
-	res.type("application/json");
-	res.send(0); // TODO: replace with risk points
+  	res.type("application/json");
+  	res.send(JSON.stringify(output));
 });
 
 // calculates risk points from bmi
