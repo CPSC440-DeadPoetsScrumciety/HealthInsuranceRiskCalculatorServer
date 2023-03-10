@@ -7,17 +7,18 @@ const port = process.env.PORT || 3000;
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 
-app.use(cors());
+
+app.use('/api', cors())
 
 
 app.get('/ping', (req, res)=>{
-console.log("reached server")
-response.type("text/plain");
-response.send("Ping succeeded!");
+	console.log("reached server")
+	response.type("text/plain");
+	response.send("Ping succeeded!");
 });
 
 // calculates risk points from age
-app.post('/calc-age', bodyParser, (req, res) => {
+app.post('/api/calc-age', bodyParser, (req, res) => {
 	// TODO, returns risk points based on age range
 	var output = {points: 0};
   	age = req.body.age;
@@ -37,7 +38,7 @@ app.post('/calc-age', bodyParser, (req, res) => {
 });
 
 // calculates risk points from bmi
-app.post('/calc-bmi', bodyParser, (req, res) => {
+app.post('/api/calc-bmi', bodyParser, (req, res) => {
 	var heightFeet = req.body.heightFeet;
 	var heightInches = req.body.heightInches;
 	var weightPounds = req.body.weight;
@@ -64,7 +65,7 @@ app.post('/calc-bmi', bodyParser, (req, res) => {
 });
 
 // calculates risk points from blood pressure
-app.post('calc-blood-pressure', bodyParser, (req, res) => {
+app.post('/api/calc-blood-pressure', bodyParser, (req, res) => {
 	// TODO, returns risk points and category names based on diastolic and systolic BP
 
 	res.type("application/json");
@@ -73,14 +74,14 @@ app.post('calc-blood-pressure', bodyParser, (req, res) => {
 });
 
 // calculates risk points from family history of specified diseases
-app.post('calc-family-history'. bodyParser, (req, res) => {
+app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 	//TODO, returns risk points based on existence of certains diseases in your family
 
 	res.type("application/json");
 	res.send(0) // TODO: replace with risk points
 });
 
-app.post('calc-total-risk', bodyParser, (req, res) => {
+app.post('/api/calc-total-risk', bodyParser, (req, res) => {
 	// TODO, returns the sum of all the above calculated risk points
 
 	res.type("application/json");
