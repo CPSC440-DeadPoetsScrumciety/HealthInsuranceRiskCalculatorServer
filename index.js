@@ -83,7 +83,7 @@ app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 app.post('/api/calc-total-risk', bodyParser, (req, res) => {
 	var total = {};
 
-  	total.points = request.body.age + request.body.bmi;
+  	total.points = req.body.age + req.body.bmi;			// TODO: update
 
   if (total.points <= 20) {
     total.risk = "Low Risk";
@@ -95,8 +95,13 @@ app.post('/api/calc-total-risk', bodyParser, (req, res) => {
     total.risk = "Uninsurable";
   }
 
-  response.type("application/json");
-  response.send(total);
+  res.type("application/json");
+  res.send(total);
+});
+
+app.post('/api/test', bodyParser, (req, res) => {
+	res.type("application/json");
+	res.send(req.body.age);
 });
 
 // Custom 404 page
