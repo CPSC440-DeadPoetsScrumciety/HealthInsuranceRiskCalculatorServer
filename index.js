@@ -6,12 +6,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(express.static(HealthInsuranceRiskCalculatorClient + '/static'))
-<<<<<<< HEAD
+app.use(express.static(HealthInsuranceRiskCalculatorClient + '/static');
 app.use('/api',cors());
-=======
-app.use('/api', cors())
->>>>>>> 116973ac2e2f8ef6fdd672796530bf946e6053a7
 
 
 app.get('/api/ping', (req, res)=>{
