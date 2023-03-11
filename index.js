@@ -19,7 +19,6 @@ app.get('/api/ping', (req, res)=>{
 
 // calculates risk points from age
 app.post('/api/calc-age', bodyParser, (req, res) => {
-	// TODO, returns risk points based on age range
 	var output = {points: 0};
   	age = req.body.age;
 	
@@ -39,6 +38,7 @@ app.post('/api/calc-age', bodyParser, (req, res) => {
 
 // calculates risk points from bmi
 app.post('/api/calc-bmi', bodyParser, (req, res) => {
+	var output = {points: 0};
 	var heightFeet = req.body.heightFeet;
 	var heightInches = req.body.heightInches;
 	var weightPounds = req.body.weight;
@@ -49,19 +49,19 @@ app.post('/api/calc-bmi', bodyParser, (req, res) => {
 	bmi = weightKG / (heightMeters * heightMeters);
 
 	if (bmi >= 18.5 && bmi < 25) {
-		cateogry = "Normal";
-		points = 0;
+		cateogry = "Normal";			// TODO: change format
+		output.points = 0;
 	} else if (bmi < 30) {
 		category = "Overweight";
-		points = 30;
+		output.points = 30;
 	} else {
 		cateogry = "Other";
-		points = 75;
+		output.points = 75;
 	}
 
 	res.type("application/json");
-	res.send(category);
-	res.send(points);
+	//res.send(category);
+	res.send(output);
 });
 
 // calculates risk points from blood pressure
