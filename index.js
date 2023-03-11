@@ -5,9 +5,9 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(express.static(HealthInsuranceRiskCalculatorClient + '/static');
-app.use('/api',cors());
+app.use( bodyParser.json() );       							// to support JSON-encoded bodies
+app.use(express.static(HealthInsuranceRiskCalculatorClient + '/static'));
+app.use(cors());
 
 
 app.get('/api/ping', (req, res)=>{
