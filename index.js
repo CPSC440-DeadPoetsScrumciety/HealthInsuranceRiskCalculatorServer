@@ -6,14 +6,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
-<<<<<<< HEAD
 app.use(express.static(HealthInsuranceRiskCalculatorClient + '/static'))
-app.use(cors());
-=======
-
-
-app.use('/api', cors())
->>>>>>> 947026cdbd866b10ed07638f9e075fcbe11dd703
+app.use('/api',cors());
 
 
 app.get('/api/ping', (req, res)=>{
@@ -43,7 +37,7 @@ app.post('/api/calc-age', bodyParser, (req, res) => {
 
 // calculates risk points from bmi
 app.post('/api/calc-bmi', bodyParser, (req, res) => {
-	var output = {points: 0};
+	var output = {};
 	var heightFeet = req.body.heightFeet;
 	var heightInches = req.body.heightInches;
 	var weightPounds = req.body.weight;
@@ -54,13 +48,13 @@ app.post('/api/calc-bmi', bodyParser, (req, res) => {
 	bmi = weightKG / (heightMeters * heightMeters);
 
 	if (bmi >= 18.5 && bmi < 25) {
-		cateogry = "Normal";			// TODO: change format
+		output.category = "Normal";			// TODO: change format
 		output.points = 0;
 	} else if (bmi < 30) {
-		category = "Overweight";
+		output.category = "Overweight";
 		output.points = 30;
 	} else {
-		cateogry = "Other";
+		output.category = "Other";
 		output.points = 75;
 	}
 
@@ -87,13 +81,23 @@ app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 });
 
 app.post('/api/calc-total-risk', bodyParser, (req, res) => {
-	// TODO, returns the sum of all the above calculated risk points
+	var total = {};
 
-	res.type("application/json");
-	res.send("") // TODO: replace with risk category
-	res.send(0) // TODO: replace with risk points
+  	total.points = request.body.age + request.body.bmi;
+
+  if (total.points <= 20) {
+    total.risk = "Low Risk";
+  } else if (total.points <= 50) {
+    total.risk = "Moderate Risk";
+  } else if (total.points <= 75) {
+    total.risk = "High Risk";
+  } else {
+    total.risk = "Uninsurable";
+  }
+
+  response.type("application/json");
+  response.send(total);
 });
-
 
 // Custom 404 page
 app.use((req, res) => {
