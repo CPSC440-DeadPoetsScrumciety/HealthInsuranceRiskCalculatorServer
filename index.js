@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
-
+app.use(express.static(HealthInsuranceRiskCalculatorClient + '/static'))
 app.use(cors());
 
 
@@ -91,16 +91,21 @@ app.post('calc-total-risk', bodyParser, (req, res) => {
 
 // Custom 404 page
 app.use((req, res) => {
-	// TODO
+	res.type('text/plain')
+	res.status(404)
+	res.send('Not Found')
 });
 
 // Custom 500 page
 app.use(function (error, req, res, next) {
-	// TODO
+	console.error(err.message)
+	res.type('text/plain')
+	res.status(500)
+	res.send('Server Error')
 });
 
 
 //Start your server on a specified port
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 });
