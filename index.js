@@ -9,13 +9,18 @@ app.use(cors({
     origin: 'https://dps-insuranceriskcalculator.azurewebsites.net/'
 }));
 
-
-
-app.post('/api/ping', (req, res)=>{
-	console.log("reached server")
-	res.type("text/plain");
-	res.send("Ping succeeded!");
+app.get('/', (req, res) => {
+	res.type('text/plain')
+	res.send('Health Insurance Risk Calculator API')
 });
+
+app.get("/api/ping", (request, response) => {
+	console.log("Ping recieved");
+	response.type("text/plain");
+	response.send("Ping received!");
+  });
+
+/*
 
 // calculates risk points from age
 app.post('/api/calc-age', bodyParser, (req, res) => {
