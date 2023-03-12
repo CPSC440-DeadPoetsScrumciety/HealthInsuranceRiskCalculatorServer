@@ -13,8 +13,8 @@ app.use(cors());
 
 app.post('/api/ping', (req, res)=>{
 	console.log("reached server")
-	response.type("text/plain");
-	response.send("Ping succeeded!");
+	res.type("text/plain");
+	res.send("Ping succeeded!");
 });
 
 // calculates risk points from age
