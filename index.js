@@ -5,12 +5,7 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
-
-app.use('/api', function(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', 'https://dps-insuranceriskcalculator.azurewebsites.net');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-});
+this.app.use(cors());
 
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
