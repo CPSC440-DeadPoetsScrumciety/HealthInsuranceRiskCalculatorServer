@@ -7,8 +7,8 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 
-router.get('/', function(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+app.use('/api', function(req, res) {
+    res.setHeader('Access-Control-Allow-Origin', 'https://dps-insuranceriskcalculator.azurewebsites.net');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
 });
 
