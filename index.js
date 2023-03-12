@@ -15,10 +15,10 @@ app.get('/', (req, res) => {
 	res.send('Health Insurance Risk Calculator API')
 });
 
-app.get("/api/ping", (request, response) => {
+app.get('/api/ping', bodyParser, (req, res) => {
 	console.log("Ping recieved");
-	response.type("text/plain");
-	response.send("Ping received!");
+	res.type("application/json");
+	res.send("Ping received!");
   });
 
 /*
