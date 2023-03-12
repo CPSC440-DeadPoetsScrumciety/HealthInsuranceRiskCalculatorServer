@@ -11,7 +11,7 @@ app.use( bodyParser.json() );       							// to support JSON-encoded bodies
 app.use(cors());
 
 
-app.get('/api/ping', (req, res)=>{
+app.post('/api/ping', (req, res)=>{
 	console.log("reached server")
 	response.type("text/plain");
 	response.send("Ping succeeded!");

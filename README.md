@@ -10,3 +10,4 @@ https://www.geeksforgeeks.org/how-to-send-data-from-client-side-to-node-js-serve
 https://www.geeksforgeeks.org/how-to-send-response-from-server-to-client-using-node-js-and-express-js/?ref=rp   
 https://www.youtube.com/watch?v=AVmGmLFcukM  
 https://github.com/EricJPogue/cpsc-example-code  
+https://www.section.io/engineering-education/how-to-use-cors-in-nodejs-with-express/
