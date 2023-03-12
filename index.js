@@ -72,7 +72,7 @@ app.post('/api/calc-blood-pressure', bodyParser, (req, res) => {
 	res.send("") // TODO: replace with category 
 	res.send(0) // TODO: replace with risk points
 });
-
+/*
 // calculates risk points from family history of specified diseases
 app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 	//TODO, returns risk points based on existence of certains diseases in your family
@@ -107,10 +107,10 @@ app.post('/api/calc-total-risk', bodyParser, (req, res) => {
   res.type("application/json");
   res.send(total);
 });
-
+*/
 app.post('/api/test', bodyParser, (req, res) => {
 	res.type("application/json");
-	res.send(req.body.age);
+	res.send(10);
 });
 
 // Custom 404 page
