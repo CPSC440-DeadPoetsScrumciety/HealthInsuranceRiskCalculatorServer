@@ -1,7 +1,7 @@
 {
   "name": "healthinsuranceriskcalculatorserver",
   "version": "1.0.0",
-  "description": "",
+  "description": "https://dps-insuranceriskcalculator-server.azurewebsites.net",
   "main": "index.js",
   "scripts": {},
   "repository": {
@@ -22,5 +22,6 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {}
 }

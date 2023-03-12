@@ -1,14 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser').json();
-app.use(cors({
-    origin: 'https://dps-insuranceriskcalculator.azurewebsites.net/'
-}));
+const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use( bodyParser.json() );       							// to support JSON-encoded bodies
-app.use(cors());
+app.use(cors({
+    origin: 'https://dps-insuranceriskcalculator.azurewebsites.net/'
+}));
+
 
 
 app.post('/api/ping', (req, res)=>{
@@ -86,7 +86,7 @@ app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 	if (alzheimers) output.point += 10;
 
 	res.type("application/json");
-	res.send(output)   // TODO: replace with risk points
+	res.send(output)   
 });
 
 app.post('/api/calc-total-risk', bodyParser, (req, res) => {
