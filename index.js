@@ -3,7 +3,7 @@ const bodyParser = require('body-parser').json();
 const cors = require("cors");
 
 const app = express();
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
 
 app.use(cors({
    	origin: "https://dps-insuranceriskcalculator.azurewebsites.net"
@@ -114,9 +114,9 @@ app.post('/api/calc-total-risk', bodyParser, (req, res) => {
   res.send(total);
 });
 */
-app.post('/api/test', bodyParser, (req, res) => {
-	res.type("application/json");
-	res.send(10);
+app.get('/api/test', bodyParser, (req, res) => {
+	res.type("text/html");
+	res.send("test successful");
 });
 
 // Custom 404 page
