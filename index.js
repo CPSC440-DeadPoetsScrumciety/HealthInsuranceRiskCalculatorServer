@@ -5,19 +5,19 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
 
-this.app.use(cors({
+app.use(cors({
    	origin: "https://dps-insuranceriskcalculator.azurewebsites.net"
 }));
 
 
 app.get('/', (req, res) => {
-	res.type('text/plain')
+	res.type('text/html')
 	res.send('Health Insurance Risk Calculator API')
 });
 
 app.get('/api/ping', bodyParser, (req, res) => {
 	console.log("Ping recieved");
-	res.type("application/json");
+	res.type("text/html");
 	res.send("Ping received!");
   });
 
