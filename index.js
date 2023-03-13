@@ -93,27 +93,27 @@ app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 	res.type("application/json");
 	res.send(output)   
 });
-
+/*
 app.post('/api/calc-total-risk', bodyParser, (req, res) => {
-	var total = {};
+	var total = {"points": 0, "category": ""};
 
   	total.points = req.body.age + req.body.bmi;			// TODO: update
 
   if (total.points <= 20) {
-    total.risk = "Low Risk";
+    total.category = "Low Risk";
   } else if (total.points <= 50) {
-    total.risk = "Moderate Risk";
+    total.category = "Moderate Risk";
   } else if (total.points <= 75) {
-    total.risk = "High Risk";
+    total.cateogry = "High Risk";
   } else {
-    total.risk = "Uninsurable";
+    total.category = "Uninsurable";
   }
 
   res.type("application/json");
   res.send(total);
 });
 
-
+*/
 // Custom 404 page
 app.use((req, res) => {
 	res.type('text/plain')
