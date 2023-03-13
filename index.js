@@ -42,7 +42,7 @@ app.post('/api/calc-age', bodyParser, (req, res) => {
   	res.type("application/json");
   	res.send(output);
 });
-
+/*
 // calculates risk points from bmi
 app.post('/api/calc-bmi', bodyParser, (req, res) => {
 	var output = {"points": 0, "category": ""};
@@ -75,8 +75,7 @@ app.post('/api/calc-blood-pressure', bodyParser, (req, res) => {
 	// TODO, returns risk points and category names based on diastolic and systolic BP
 
 	res.type("application/json");
-	res.send("") // TODO: replace with category 
-	res.send(0) // TODO: replace with risk points
+	res.send("0") // TODO: replace with risk points
 });
 
 // calculates risk points from family history of specified diseases
@@ -93,7 +92,7 @@ app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 	res.type("application/json");
 	res.send(output)   
 });
-/*
+
 app.post('/api/calc-total-risk', bodyParser, (req, res) => {
 	var total = {"points": 0, "category": ""};
 
