@@ -25,22 +25,22 @@ app.get('/api/ping', bodyParser, (req, res) => {
 
 
 // calculates risk points from age
-app.post('/api/calc-age', bodyParser, (req, res) => {
-	var output = {points: 0};
+app.get('/api/calc-age', bodyParser, (req, res) => {
+	var points = 0;
   	age = req.body.age;
 	
 	if (age < 30) {
-		output.points = 0;
+		points = 0;
 	} else if (age < 45) {
-		output.points = 10;
+		points = 10;
 	} else if (age < 60) {
-		output.points = 20;
+		points = 20;
 	} else {
-		output.points = 30;
+		points = 30;
 	}
 
-  	res.type("application/json");
-  	res.send(output);
+  	res.type("text/html");
+  	res.send(points);
 });
 /*
 // calculates risk points from bmi
