@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser').json();
 const cors = require("cors");
 
+var router = express.Router();
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 
 app.use(cors({
    	origin: "https://dps-insuranceriskcalculator.azurewebsites.net"
