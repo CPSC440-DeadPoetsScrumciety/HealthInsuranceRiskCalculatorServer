@@ -22,7 +22,7 @@ app.get('/api/ping', bodyParser, (req, res) => {
 	res.send("Ping received!");
   });
 
-/*
+
 
 // calculates risk points from age
 app.post('/api/calc-age', bodyParser, (req, res) => {
@@ -45,7 +45,7 @@ app.post('/api/calc-age', bodyParser, (req, res) => {
 
 // calculates risk points from bmi
 app.post('/api/calc-bmi', bodyParser, (req, res) => {
-	var output = {};
+	var output = {"points": 0, "category": ""};
 	var heightFeet = req.body.heightFeet;
 	var heightInches = req.body.heightInches;
 	var weightPounds = req.body.weight;
@@ -56,7 +56,7 @@ app.post('/api/calc-bmi', bodyParser, (req, res) => {
 	bmi = weightKG / (heightMeters * heightMeters);
 
 	if (bmi >= 18.5 && bmi < 25) {
-		output.category = "Normal";			// TODO: change format
+		output.category = "Normal";			
 		output.points = 0;
 	} else if (bmi < 30) {
 		output.category = "Overweight";
@@ -67,7 +67,6 @@ app.post('/api/calc-bmi', bodyParser, (req, res) => {
 	}
 
 	res.type("application/json");
-	//res.send(category);
 	res.send(output);
 });
 
@@ -79,10 +78,9 @@ app.post('/api/calc-blood-pressure', bodyParser, (req, res) => {
 	res.send("") // TODO: replace with category 
 	res.send(0) // TODO: replace with risk points
 });
-/*
+
 // calculates risk points from family history of specified diseases
 app.post('/api/calc-family-history'. bodyParser, (req, res) => {
-	//TODO, returns risk points based on existence of certains diseases in your family
 	var output = {points: 0};
 	diabetes = req.body.diabetes;
 	cancer = req.body.cancer;
@@ -114,11 +112,7 @@ app.post('/api/calc-total-risk', bodyParser, (req, res) => {
   res.type("application/json");
   res.send(total);
 });
-*/
-app.get('/api/test', bodyParser, (req, res) => {
-	res.type("text/html");
-	res.send("test successful");
-});
+
 
 // Custom 404 page
 app.use((req, res) => {
