@@ -25,7 +25,7 @@ app.get('/api/ping', bodyParser, (req, res) => {
 
 
 // calculates risk points from age
-app.get('/api/calc-age', bodyParser, (req, res) => {
+app.post('/api/calc-age', bodyParser, (req, res) => {
 	var points = 0;
   	age = req.body.age;
 	
