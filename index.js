@@ -23,6 +23,24 @@ app.get('/api/ping', bodyParser, (req, res) => {
 	res.send("Ping received!");
   });
 
+  app.post('/api/calc-total-risk', bodyParser, (req, res) => {
+	var total = {"points": 0, "category": ""};
+
+  	total.points = req.body.totalPoint;			
+
+  if (total.points <= 20) {
+    total.category = "Low Risk";
+  } else if (total.points <= 50) {
+    total.category = "Moderate Risk";
+  } else if (total.points <= 75) {
+    total.cateogry = "High Risk";
+  } else {
+    total.category = "Uninsurable";
+  }
+
+  res.type("application/json");
+  res.send(total);
+});
 
 
 // calculates risk points from age
@@ -93,25 +111,7 @@ app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 	res.type("application/json");
 	res.send(output)   
 });
-
-app.post('/calc-total-risk', bodyParser, (req, res) => {
-	var total = {"points": 0, "category": ""};
-
-  	total.points = req.body.age + req.body.bmi;			// TODO: update
-
-  if (total.points <= 20) {
-    total.category = "Low Risk";
-  } else if (total.points <= 50) {
-    total.category = "Moderate Risk";
-  } else if (total.points <= 75) {
-    total.cateogry = "High Risk";
-  } else {
-    total.category = "Uninsurable";
-  }
-
-  res.type("application/json");
-  res.send(total);
-});*/
+*/
 
 
 // Custom 404 page
