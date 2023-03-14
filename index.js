@@ -26,7 +26,7 @@ app.get('/api/ping', bodyParser, (req, res) => {
 
 
 // calculates risk points from age
-app.get('/api/calc-age', bodyParser, (req, res) => {
+app.post('/api/calc-age', bodyParser, (req, res) => {
 	var points = 0;
   	let age = parseInt(req.body.age);
 
@@ -45,7 +45,7 @@ app.get('/api/calc-age', bodyParser, (req, res) => {
 });
 
 // calculates risk points from bmi
-/*app.post('/api/calc-bmi', bodyParser, (req, res) => {
+app.post('/api/calc-bmi', bodyParser, (req, res) => {
 	var output = {"points": 0, "category": ""};
 	var heightFeet = req.body.heightFeet;
 	var heightInches = req.body.heightInches;
@@ -67,9 +67,9 @@ app.get('/api/calc-age', bodyParser, (req, res) => {
 		output.points = 75;
 	}
 
-	res.type("text/plain");
+	res.type("application/json");
 	res.send(output);
-});*/
+});
 /*
 // calculates risk points from blood pressure
 app.post('/api/calc-blood-pressure', bodyParser, (req, res) => {
