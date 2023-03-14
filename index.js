@@ -23,7 +23,7 @@ app.get('/api/ping', bodyParser, (req, res) => {
 	res.send("Ping received!");
   });
 
-  app.post('/api/calc-total-risk', bodyParser, (req, res) => {
+ app.post('/api/calc-total-risk', bodyParser, (req, res) => {
 	var total = {"points": 0, "category": ""};
 
   	total.points = req.body.totalPoint;			
