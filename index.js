@@ -3,12 +3,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 
-//var router = express.Router();
+var router = express.Router();
 //var url = require('url');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+	origin: "https://dps-insuranceriskcalculator.azurewebsites.net"
+}));
 
 
 app.get('/', (req, res) => {
@@ -16,7 +18,7 @@ app.get('/', (req, res) => {
 	res.send('Health Insurance Risk Calculator API')
 });
 
-app.get('/ping', bodyParser, (req, res) => {
+app.get('/api/ping', bodyParser, (req, res) => {
 	console.log("Ping recieved");
 	res.type("text/html");
 	res.send("Ping received!");
@@ -25,7 +27,7 @@ app.get('/ping', bodyParser, (req, res) => {
 
 
 // calculates risk points from age
-app.get('/calc-age', bodyParser, (req, res) => {
+app.get('/api/calc-age', bodyParser, (req, res) => {
 	var points = 0;
   	let age = parseInt(req.body.age);
 
@@ -44,7 +46,7 @@ app.get('/calc-age', bodyParser, (req, res) => {
 });
 
 // calculates risk points from bmi
-/*app.post('/calc-bmi', bodyParser, (req, res) => {
+/*app.post('/api/calc-bmi', bodyParser, (req, res) => {
 	var output = {"points": 0, "category": ""};
 	var heightFeet = req.body.heightFeet;
 	var heightInches = req.body.heightInches;
@@ -96,7 +98,7 @@ app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 app.post('/calc-total-risk', bodyParser, (req, res) => {
 	var total = {"points": 0, "category": ""};
 
-  	total.points = req.body.age; // + req.body.bmi;			// TODO: update
+  	total.points = req.body.age + req.body.bmi;			// TODO: update
 
   if (total.points <= 20) {
     total.category = "Low Risk";
