@@ -40,7 +40,7 @@ app.post('/api/calc-age', bodyParser, (req, res) => {
 	}
 
   	res.type("text/html");
-  	res.send(points);
+  	res.send(points.toString());
 });
 
 // calculates risk points from bmi
