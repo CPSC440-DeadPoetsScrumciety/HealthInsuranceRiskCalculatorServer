@@ -1,14 +1,14 @@
 const express = require('express');
-const bodyParser = require('body-parser').json();
+//const jsonBodyParser = require('body-parser').json();
+const bodyParser = require('body-parser');
 const cors = require("cors");
 
-var router = express.Router();
+//var router = express.Router();
+//var url = require('url');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors({
-   	origin: "https://dps-insuranceriskcalculator.azurewebsites.net"
-}));
+app.use(cors());
 
 
 app.get('/', (req, res) => {
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 	res.send('Health Insurance Risk Calculator API')
 });
 
-app.get('/api/ping', bodyParser, (req, res) => {
+app.get('/ping', bodyParser, (req, res) => {
 	console.log("Ping recieved");
 	res.type("text/html");
 	res.send("Ping received!");
@@ -25,10 +25,10 @@ app.get('/api/ping', bodyParser, (req, res) => {
 
 
 // calculates risk points from age
-app.post('/api/calc-age', bodyParser, (req, res) => {
+app.get('/calc-age', bodyParser, (req, res) => {
 	var points = 0;
-  	age = parseInt(req.body.age);
-	
+  	let age = parseInt(req.body.age);
+
 	if (age < 30) {
 		points = 0;
 	} else if (age < 45) {
@@ -44,7 +44,7 @@ app.post('/api/calc-age', bodyParser, (req, res) => {
 });
 
 // calculates risk points from bmi
-app.post('/api/calc-bmi', bodyParser, (req, res) => {
+/*app.post('/calc-bmi', bodyParser, (req, res) => {
 	var output = {"points": 0, "category": ""};
 	var heightFeet = req.body.heightFeet;
 	var heightInches = req.body.heightInches;
@@ -66,9 +66,9 @@ app.post('/api/calc-bmi', bodyParser, (req, res) => {
 		output.points = 75;
 	}
 
-	res.type("application/json");
+	res.type("text/plain");
 	res.send(output);
-});
+});*/
 /*
 // calculates risk points from blood pressure
 app.post('/api/calc-blood-pressure', bodyParser, (req, res) => {
@@ -93,10 +93,10 @@ app.post('/api/calc-family-history'. bodyParser, (req, res) => {
 	res.send(output)   
 });
 
-app.post('/api/calc-total-risk', bodyParser, (req, res) => {
+app.post('/calc-total-risk', bodyParser, (req, res) => {
 	var total = {"points": 0, "category": ""};
 
-  	total.points = req.body.age + req.body.bmi;			// TODO: update
+  	total.points = req.body.age; // + req.body.bmi;			// TODO: update
 
   if (total.points <= 20) {
     total.category = "Low Risk";
@@ -110,9 +110,9 @@ app.post('/api/calc-total-risk', bodyParser, (req, res) => {
 
   res.type("application/json");
   res.send(total);
-});
+});*/
 
-*/
+
 // Custom 404 page
 app.use((req, res) => {
 	res.type('text/plain')
